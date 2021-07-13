@@ -21,7 +21,7 @@ class User(db.Model):
   )
 
   password = db.Column(
-    db.String(lengt = 60),
+    db.String(length = 60),
     nullable = False,
   )
 
