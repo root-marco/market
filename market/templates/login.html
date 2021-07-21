@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+login Page
+{% endblock %}
+
+{% block content %}
+
+<body class="text-center">
+  <div class="container">
+    <form method="POST" class="form-signin" style="color:white">
+
+      {{ form.hidden_tag() }}
+
+      <h1 class="h3 mb-3 mt-4 font-weight-normal">login</h1>
+
+      <br>
+      {{ form.username.label() }}
+      {{ form.username(class="form-control") }}
+      <br>
+      {{ form.password.label() }}
+      {{ form.password(class="form-control") }}
+      <br>
+
+      {{ form.submit(class="btn btn-lg btn-primary") }}
+
+    </form>
+  </div>
+</body>
+{% endblock %}
