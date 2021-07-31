@@ -4,7 +4,7 @@ from flask_login import UserMixin
 
 @login_manager.user_loader
 def load_user(user_id):
-  return User.query.get(int(user_id))
+    return User.query.get(int(user_id))
 
 
 class User(db.Model, UserMixin):
@@ -23,22 +23,22 @@ class User(db.Model, UserMixin):
     else:
       return f"{self.budget}$"
 
-    @property
-    def password(self):
-      return self.password
+  @property
+  def password(self):
+    return self.password
 
-    @password.setter
-    def password(self, plain_text_password):
-      self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+  @password.setter
+  def password(self, plain_text_password):
+    self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
 
-    def check_password_correction(self, attempted_password):
-      return bcrypt.check_password_hash(self.password_hash, attempted_password)
+  def check_password_correction(self, attempted_password):
+    return bcrypt.check_password_hash(self.password_hash, attempted_password)
 
-    def can_purchase(self, item_obj):
-      return self.budget >= item_obj.price
+  def can_purchase(self, item_obj):
+    return self.budget >= item_obj.price
 
-    def can_sell(self, item_obj):
-      return item_obj in self.items
+  def can_sell(self, item_obj):
+    return item_obj in self.items
 
 class Item(db.Model):
   
